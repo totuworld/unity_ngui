@@ -25,6 +25,12 @@
     Vector2 tempVector2 = new Vector2();
     // 새총 발사에 사용되는 오브젝트 처리.
     GameObject tempObj;
+    Animator animator;
+
+    void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 --(후략)--
 ```
 
