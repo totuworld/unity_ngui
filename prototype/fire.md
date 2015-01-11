@@ -1,4 +1,7 @@
 # 새총발사
+튜토리얼 바로 보기
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/-BK3YvznlF8/0.jpg)](http://www.youtube.com/watch?v=-BK3YvznlF8)
+---
 
 ### 멤버필드 추가
 예제 3-6 : FarmerTouchControl.cs

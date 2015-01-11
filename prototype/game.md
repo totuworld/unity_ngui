@@ -1,4 +1,8 @@
 # 게임 구성
+튜토리얼 바로 보기
+
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/DPDNFcuWvnk/0.jpg)](http://www.youtube.com/watch?v=DPDNFcuWvnk)
+---
 
 PlayScene의 Main Camera 게임 오브젝트를 선택하고 아래 표를  참조하여 Camera 컴포넌트를 설정합니다.
 
