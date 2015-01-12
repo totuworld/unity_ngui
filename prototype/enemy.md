@@ -30,6 +30,11 @@ public class Enemy : MonoBehaviour {
     protected float attackPower = 10;
     protected float damagedPower;
     protected Animator animator;
+
+    void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 --(후략)--
 ```
 
