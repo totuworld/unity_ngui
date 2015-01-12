@@ -1,5 +1,6 @@
 # 새총발사
-튜토리얼 바로 보기
+심화과정2 - 새총 발사 강좌 바로보기
+
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/4g4pFgSeAhI/0.jpg)](http://www.youtube.com/watch?v=4g4pFgSeAhI)
 ---
 

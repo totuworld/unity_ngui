@@ -1,5 +1,5 @@
 # 게임 구성
-튜토리얼 바로 보기
+심화과정1 - 준비 강좌 바로보기
 
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/DPDNFcuWvnk/0.jpg)](http://www.youtube.com/watch?v=DPDNFcuWvnk)
 ---
