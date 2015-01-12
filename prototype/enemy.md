@@ -199,43 +199,44 @@ public class Enemy : MonoBehaviour, IDamageable {
 --(중략)--
     public void Damage(float damageTaken)
     {
-        // dead나 none 상태일 때 진행되지 않도록 한다.
-        if (currentState == EnemyState.dead || currentState == EnemyState.none)
-        {
-        if( IsInvoking("ChangeStateToMove") )
-        {
-            CancelInvoke("ChangeStateToMove");
-        }
-        return;
-    }
+	    // dead나 none 상태일 때 진행되지 않도록 한다.
+	    if (currentState == EnemyState.dead || currentState == EnemyState.none)
+	    {
+	        if( IsInvoking("ChangeStateToMove") )
+	        {
+	            CancelInvoke("ChangeStateToMove");
+	        }
+	        return;
+    	}
 
-    // 충돌 후 일정 시간 동안 이동 정지.
-    currentState = EnemyState.damaged;
-    if( IsInvoking("ChangeStateToMove") )
-    {
-        CancelInvoke("ChangeStateToMove");
-    }
-    Invoke("ChangeStateToMove", 0.3f);
-    // currentHP를 소진한다.
-    currentHP -= damageTaken;
-    // 현재 체력이 0과 같거나 작다면
-    if(currentHP <= 0)
-    {
-        currentHP = 0;
-        enableAttack = false;
-        currentState = EnemyState.dead;
-        // dead 애니메이션 재생
-        animator.SetTrigger("isDead");
-        if( IsInvoking("ChangeStateToMove") )
-        {
-            CancelInvoke("ChangeStateToMove");
-        }
+	    // 충돌 후 일정 시간 동안 이동 정지.
+	    currentState = EnemyState.damaged;
+	    if( IsInvoking("ChangeStateToMove") )
+	    {
+	        CancelInvoke("ChangeStateToMove");
+	    }
+	    Invoke("ChangeStateToMove", 0.3f);
+	    // currentHP를 소진한다.
+	    currentHP -= damageTaken;
+	    // 현재 체력이 0과 같거나 작다면
+	    if(currentHP <= 0)
+	    {
+	        currentHP = 0;
+	        enableAttack = false;
+	        currentState = EnemyState.dead;
+	        // dead 애니메이션 재생
+	        animator.SetTrigger("isDead");
+	        if( IsInvoking("ChangeStateToMove") )
+	        {
+	            CancelInvoke("ChangeStateToMove");
+	        }
             // TODO: 점수 증가.
         }
         else
         {
             animator.SetTrigger("damaged");
         }
+
     }
 
     void ChangeStateToMove()
