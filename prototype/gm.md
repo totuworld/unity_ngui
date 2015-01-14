@@ -255,7 +255,7 @@ public class GameObjectPool {
         {
             // 게임 오브젝트 풀 생성.
             GameObjectPool tempGameObjectPool =
-                new GameObjectPool(gameObjectPoolPosition.transform.position.x);
+                new GameObjectPool(gameObjectPoolPosition.transform.position.x, spawnEnemyObjs[i]);
             for(int j=0;j<20;j++)
             {
                 // 게임 오브젝트 생성.
@@ -327,6 +327,12 @@ public struct EnemyWaveData
 예제 3-38: GamePlayManager.cs
 ```csharp
 --(전략)--
+    void OnEnable()
+    {
+        InitGameObjectPools();
+        LoadEnemyWaveDataFromXML();
+    }
+--(중략)--
     // XML을 읽어서 enemyWaveDatas에 저장한다.
     void LoadEnemyWaveDataFromXML()
     {
