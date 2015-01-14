@@ -62,14 +62,13 @@ public class GamePlayManager : MonoBehaviour, IDamageable {
     // 획득한 점수 저장.
     int score = 0;
 }
---(후략)--
 ```
 
 ### 농장 HP 및 점수 처리
 예제 3-26: GamePlayManager.cs
 ```csharp
 --(전략)--
-    public void Damaged(float damageTaken)
+    public void Damage(float damageTaken)
     {
         if(nowGameState == GameState.gameOver) return;
         farmCurrentHP -= damageTaken;
@@ -106,7 +105,7 @@ public class GamePlayManager : MonoBehaviour, IDamageable {
 ```
 
 ### 게임 데이터 스크립트와 연결
-예제 3-28: GamePlayManager.cs
+예제 3-28: GameData.cs
 ```csharp
 --(전략)--
     public GamePlayManager gamePlayManager;
@@ -136,8 +135,8 @@ public class GamePlayManager : MonoBehaviour, IDamageable {
     public void Damage(float damageTaken)
     {
 --(중략)--
-        // 점수 증가.
-        GameData.Instance.gamePlayManager.AddScore(10);
+            // 점수 증가.
+            GameData.Instance.gamePlayManager.AddScore(10);
 --(후략)--
 ```
 
