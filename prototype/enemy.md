@@ -1,5 +1,9 @@
 # 적 캐릭터 제작
 
+심화과정3 - 적 캐릭터 제작 1
+
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/dnZpH8BlxO4/0.jpg)](http://www.youtube.com/watch?v=dnZpH8BlxO4)
+
 ### 멤버 필드 추가
 예제 3-12: Enemy.cs
 
