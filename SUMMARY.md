@@ -5,6 +5,11 @@
    * [디펜스 게임 프로토타입 제작](prototype/prototype.md)
        * [게임 구성](prototype/game.md)
        * [새총 발사](prototype/fire.md)
+         * [FarmerTouchControl](prototype/full/1/FarmerTouchControl.md)
        * [적 캐릭터 제작](prototype/enemy.md)
+         * [FarmerTouchControl](prototype/full/2/FarmerTouchControl.md)
+         * [Enemy](prototype/full/2/Enemy.md)
+         * [IDamageable](prototype/full/2/IDamageable.md)
+         * [ShotObj](prototype/full/2/ShotObj.md)
        * [게임 플레이 매니저](prototype/gm.md)
 
