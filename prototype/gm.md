@@ -370,45 +370,45 @@ public struct EnemyWaveData
         {15, 4}
     };
 --(중략)--
-void SpawnEnemy(EnemyWaveData enemyData)
-{
-    int positionPointer = 1;
-    int shiftPosition = 0;
-    // 생성할 위치 값으로 생성할 유닛 수 판단.
-    enemyData.amount = positionToAmount[enemyData.spawnPosition];
-    // 생성해야하는 숫자만큼 loop
-    for(int i=0; i< enemyData.amount; i++)
+    void SpawnEnemy(EnemyWaveData enemyData)
     {
-        // 생성할 위치 선택.
-        while( (positionPointer & enemyData.spawnPosition) < 1 )
+        int positionPointer = 1;
+        int shiftPosition = 0;
+        // 생성할 위치 값으로 생성할 유닛 수 판단.
+        enemyData.amount = positionToAmount[enemyData.spawnPosition];
+        // 생성해야하는 숫자만큼 loop
+        for(int i=0; i< enemyData.amount; i++)
         {
+            // 생성할 위치 선택.
+            while( (positionPointer & enemyData.spawnPosition) < 1 )
+            {
+                shiftPosition++;
+                positionPointer = 1 << shiftPosition;
+            }
+            // 오브젝트 풀에 사용가능한 게임 오브젝트가 있는지 점검.
+
+            GameObject currentSpawnGameObject;
+            if( !gameObjectPools[enemyData.type]
+            .NextGameObject(out currentSpawnGameObject) )
+            {
+                // 사용가능한 게임 오브젝트가 없다면 생성하여 추가한다.
+                currentSpawnGameObject =
+                    Instantiate(
+                    gameObjectPools[enemyData.type].spawnObj,
+                    gameObjectPoolPosition.transform.position,
+                    Quaternion.identity) as GameObject;
+
+                currentSpawnGameObject.transform.parent = gameObjectPoolPosition;
+                currentSpawnGameObject.name =
+                    enemyData.type + gameObjectPools[enemyData.type].lastIndex;
+                gameObjectPools[enemyData.type].AddGameObject(currentSpawnGameObject);
+            }
+            currentSpawnGameObject.transform.position =
+                spawnPositions[shiftPosition];
+            // TODO: 선택된 적 캐릭터를 초기화하여 작동시킨다.
             shiftPosition++;
-            positionPointer = 1 << shiftPosition;
         }
-        // 오브젝트 풀에 사용가능한 게임 오브젝트가 있는지 점검.
-
-        GameObject currentSpawnGameObject;
-        if( !gameObjectPools[enemyData.type]
-        .NextGameObject(out currentSpawnGameObject) )
-        {
-            // 사용가능한 게임 오브젝트가 없다면 생성하여 추가한다.
-            currentSpawnGameObject =
-                Instantiate(
-                gameObjectPools[enemyData.type].spawnObj,
-                gameObjectPoolPosition.transform.position,
-                Quaternion.identity) as GameObject;
-
-            currentSpawnGameObject.transform.parent = gameObjectPoolPosition;
-            currentSpawnGameObject.name =
-                enemyData.type + gameObjectPools[enemyData.type].lastIndex;
-            gameObjectPools[enemyData.type].AddGameObject(currentSpawnGameObject);
-        }
-        currentSpawnGameObject.transform.position =
-            spawnPositions[shiftPosition];
-        // TODO: 선택된 적 캐릭터를 초기화하여 작동시킨다.
-        shiftPosition++;
     }
-}
 --(후략)--
 ```
 
@@ -441,16 +441,16 @@ void SpawnEnemy(EnemyWaveData enemyData)
     void SpawnEnemy(EnemyWaveData enemyData)
     {
 --(중략)--
-        // 선택된 적 캐릭터를 초기화하여 작동시킨다.
-        currentSpawnGameObject.tag = enemyData.tagName;
-        Enemy currentEnemy = currentSpawnGameObject.GetComponent<Enemy>();
-        currentEnemy.InitEnemy(enemyData.HP, enemyData.AD, enemyData.MS);
-        shiftPosition++;
+            // 선택된 적 캐릭터를 초기화하여 작동시킨다.
+            currentSpawnGameObject.tag = enemyData.tagName;
+            Enemy currentEnemy = currentSpawnGameObject.GetComponent<Enemy>();
+            currentEnemy.InitEnemy(enemyData.HP, enemyData.AD, enemyData.MS);
+            shiftPosition++;
 
-        if(enemyData.tagName == "boss")
-        {
-            // TODO: 적 보스 캐릭터가 등장했다는 표시를 띄운다.
-        }
+            if(enemyData.tagName == "boss")
+            {
+                // TODO: 적 보스 캐릭터가 등장했다는 표시를 띄운다.
+            }
 --(후략)--
 ```
 
@@ -519,52 +519,58 @@ void SpawnEnemy(EnemyWaveData enemyData)
 예제 3-43: Enemy.cs
 ```csharp
 --(전략)--
-public void Damage(float damageTaken)
-{
-    // dead나 none 상태일 때 진행되지 않도록 한다.
-    if (currentState == EnemyState.dead || currentState == EnemyState.none)
+    public void Damage(float damageTaken)
     {
+        // dead나 none 상태일 때 진행되지 않도록 한다.
+        if (currentState == EnemyState.dead || currentState == EnemyState.none)
+        {
+            if( IsInvoking("ChangeStateToMove") )
+            {
+                CancelInvoke("ChangeStateToMove");
+            }
+            return;
+        }
+
+        // 충돌 후 일정 시간 동안 이동 정지.
+        currentState = EnemyState.damaged;
         if( IsInvoking("ChangeStateToMove") )
         {
             CancelInvoke("ChangeStateToMove");
         }
-        return;
-    }
+        Invoke("ChangeStateToMove", 0.3f);
 
-    // 충돌 후 일정 시간 동안 이동 정지.
-    currentState = EnemyState.damaged;
-    if( IsInvoking("ChangeStateToMove") )
-    {
-        CancelInvoke("ChangeStateToMove");
-    }
-    Invoke("ChangeStateToMove", 0.3f);
-
-    // currentHP를 소진한다.
-    currentHP -= damageTaken;
-    // 현재 체력이 0과 같거나 작다면
-    if(currentHP <= 0)
-    {
-        currentHP = 0;
-        enableAttack = false;
-        currentState = EnemyState.dead;
-        // dead 애니메이션 재생
-        animator.SetTrigger("isDead");
-        if( IsInvoking("ChangeStateToMove") )
+        // currentHP를 소진한다.
+        currentHP -= damageTaken;
+        // 현재 체력이 0과 같거나 작다면
+        if(currentHP <= 0)
         {
-            CancelInvoke("ChangeStateToMove");
+            currentHP = 0;
+            enableAttack = false;
+            currentState = EnemyState.dead;
+            // dead 애니메이션 재생
+            animator.SetTrigger("isDead");
+            if( IsInvoking("ChangeStateToMove") )
+            {
+                CancelInvoke("ChangeStateToMove");
+            }
+            // 점수 증가.
+            GameData.Instance.gamePlayManager.AddScore(10);
+            // 적 보스가 사망하면 다시 적을 생성할 수 있도록 처리한다.
+            if(gameObject.tag == "boss")
+            {
+                GameData.Instance.gamePlayManager.SetupGameStateToIdle();
+            }
         }
-        // 점수 증가.
-        GameData.Instance.gamePlayManager.AddScore(10);
-        // 적 보스가 사망하면 다시 적을 생성할 수 있도록 처리한다.
-        if(gameObject.tag == "boss")
+        else
         {
-            GameData.Instance.gamePlayManager.SetupGameStateToIdle();
+            animator.SetTrigger("damaged");
         }
     }
-    else
+
+    public void ResetEnemy()
     {
-        animator.SetTrigger("damaged");
+        transform.position = Vector3.right * 30;
+        currentState = EnemyState.none;
     }
-}
 --(후략)--
 ```
