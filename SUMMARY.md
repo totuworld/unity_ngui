@@ -12,4 +12,6 @@
          * [IDamageable](prototype/full/2/IDamageable.md)
          * [ShotObj](prototype/full/2/ShotObj.md)
        * [게임 플레이 매니저](prototype/gm.md)
+         * [GamePlayManager](prototype/full/3/GamePlayManager.md)
+         * [Enemy](prototype/full/3/Enemy.md)
 
