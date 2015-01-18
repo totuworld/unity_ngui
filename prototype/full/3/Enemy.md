@@ -144,6 +144,8 @@ public class Enemy : MonoBehaviour, IDamageable {
     {
         transform.position = Vector3.right * 30;
         currentState = EnemyState.none;
+        animator.ResetTrigger("isDead");
+        animator.SetTrigger("isAlive");
     }
 
     void ChangeStateToMove()
@@ -177,6 +179,7 @@ public class Enemy : MonoBehaviour, IDamageable {
         currentHP = setupMaxHP;
         attackPower = setupAttackPower;
         moveSpeed = setupMoveSpeed;
+        enableAttack = true;
         // 캐릭터 상태를 변경하여 이동을 시작하도록 한다.
         currentState = EnemyState.move;
         // isAlive 트리거를 초기화해서 dead 애니메이션 종료 후
