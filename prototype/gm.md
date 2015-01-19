@@ -1,5 +1,9 @@
 # 게임 플레이 매니저
 
+심화과정5 - 게임 플레이 매니저 1 바로보기
+
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/gCbJkPRPgL8/0.jpg)](http://www.youtube.com/watch?v=gCbJkPRPgL8)
+
 ### 게임 데이터 스크립트 생성
 
 예제 3-24: GameData.cs
