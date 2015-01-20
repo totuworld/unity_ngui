@@ -79,6 +79,7 @@ public class EnemyRanged : Enemy {
 ```csharp
 using UnityEngine;
 using System.Collections;
+
 public class EnemyShotObj : ShotObj
 {
 	void OnTriggerEnter2D(Collider2D other)
