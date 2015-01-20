@@ -114,7 +114,8 @@ public class EnemyShotObj : ShotObj
 			(IDamageable)other.GetComponent(typeof(IDamageable));
 		damageTarget.Damage(attackPower);
 		// 공격 후 제거.
-		Destroy(gameObject);
+        transform.position = (Vector3.right * 30) + (Vector3.up * 10);
+        rigidbody2D.velocity = Vector2.zero;
 	}
 ---(후략)---
 ```
