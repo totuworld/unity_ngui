@@ -148,7 +148,7 @@ public class EnemyShotObj : ShotObj
 ```
 
 
-### 애니메이션 수정
+# 애니메이션 수정
 
 예제 3-51: EnemyRanged.cs
 ```csharp
