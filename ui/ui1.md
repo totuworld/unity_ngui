@@ -120,6 +120,7 @@
 |Text|Wave|
 
 표 3-29
+
 | 속성 | 값 |
 | ---|:---:|
 |Anchors Type|Unified|
@@ -179,6 +180,7 @@
 
 
 표 3-33
+
 | 속성 | 값 |
 | ---|:---:|
 |Color Tint|255, 111, 0, 255|
@@ -191,6 +193,7 @@
 |Top|Target’s Top|0|
 
 표 3-34
+
 | 속성 | 값 |
 | ---|:---:|
 |Font|NanumBarunGothicBold 끌어다 놓기|
