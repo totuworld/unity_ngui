@@ -1,6 +1,6 @@
 # 따라하면서 배우는 NGUI 유니티 2D 게임 프로그래밍
 
-![Alt text](http://developerfarm.cdn1.cafe24.com/cover/l/9788998139704.jpg "따라하면서 배우는 NGUI 유니티 2D 게임 프로그래밍")
+![따라하면서 배우는 NGUI 유니티 2D 게임 프로그래밍](http://developerfarm.cdn1.cafe24.com/cover/l/9788998139704.jpg "따라하면서 배우는 NGUI 유니티 2D 게임 프로그래밍")
 
 http://wikibook.co.kr/unity-ngui/
 
