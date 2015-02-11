@@ -19,3 +19,6 @@
          * [EnemyRanged](prototype/full/4/EnemyRanged.md)
          * [ShotObj](prototype/full/4/ShotObj.md)
          * [EnemyShotObj](prototype/full/4/EnemyShotObj.md)
+   * [디펜스 게임 유저 인터페이스 구성](ui/README.md)
+       * [게임 플레이 UI 구성](ui/ui1.md)
+       * [게임 플레이 UI 연결](ui/ui2.md)
