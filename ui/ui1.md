@@ -1,3 +1,20 @@
+# 게임 플레이 UI 구성
+
+![complete](/ui/img/3-1-0_2.png)
+
+
+### 농장 체력 표시
+
+* UI 리소스 추가
+> [github 소스 3-3/inGameUI/](https://github.com/wikibook/ngui/tree/master/3-3/inGameUI)
+> 위 리소스를 프로젝트 브라우저 Assets/UI/ 폴더로 모두 복사
+* InGameAtlas 생성
+> Assets/UI/UIResource 폴더의 모든 이미지를 선택하여 추가
+* NGUI 2D UI 생성
+> Transform Position (28, 0, 0)
+> Constrained 960x640
+
+
 
 표 3-19: UISprite 컴포넌트 설정
 
@@ -10,6 +27,9 @@
 |Depth|2|
 |Size|150x38|
 |Color Tint|73, 44, 0, 255|
+
+* BarBorder 스프라이트 Border 10, 10, 10, 10으로 편집
+
 
 
 표 3-20
@@ -36,6 +56,9 @@
 |Size|140x32|
 |Color Tint|174, 0, 0, 255|
 
+* FillRect 스프라이트 Border 10, 10, 10, 10으로 편집
+
+
 
 표 3-22
 
@@ -51,9 +74,12 @@
 |Execute|OnEnable|
 |Target|HPBar 게임 오브젝트|
 |Left|Target’s Left|-55|
-|Right|Target’s Right|15|
+|Right|Target’s Left|15|
 |Bottom|Target’s Bottom|-5|
 |Top|Target’s Top|5|
+
+* ShadowRect 스프라이트 Border 10, 10, 10, 10으로 편집
+
 
 
 표 3-23
@@ -64,8 +90,16 @@
 |Font Size|30|
 |Text|HP|
 |Overflow|ResizedFreely|
+|Keep crisp|Never|
 |Depth|4|
 |Color Tint|255, 255, 255, 255|
+
+
+* HPBar 구조
+> BarBG
+> BarFill
+> titleBG
+>> titleLabel
 
 
 
@@ -80,6 +114,10 @@
 |Right|Target’s Left|210|
 |Bottom|Target’s Top|-48|
 |Top|Target’s Top|-10|
+
+* BarFill 게임 오브젝트에 경계선이 보이면 BarPattern 스프라이트 Border 1, 1, 1, 1로 수정
+
+### 점수 표시
 
 표 3-25
 
