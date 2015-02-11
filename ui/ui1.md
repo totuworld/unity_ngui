@@ -6,17 +6,17 @@
 ### 농장 체력 표시
 
 * UI 리소스 추가
-> [github 소스 3-3/inGameUI/](https://github.com/wikibook/ngui/tree/master/3-3/inGameUI)
-> 위 리소스를 프로젝트 브라우저 Assets/UI/ 폴더로 모두 복사
+  * [github 소스 3-3/inGameUI/](https://github.com/wikibook/ngui/tree/master/3-3/inGameUI)
+  * 위 리소스를 프로젝트 브라우저 Assets/UI/ 폴더로 모두 복사
 * InGameAtlas 생성
-> Assets/UI/UIResource 폴더의 모든 이미지를 선택하여 추가
+  * Assets/UI/UIResource 폴더의 모든 이미지를 선택하여 추가
 * NGUI 2D UI 생성
-> Transform Position (28, 0, 0)
-> Constrained 960x640
+  * Transform Position (28, 0, 0)
+  * Constrained 960x640
 
 
 
-표 3-19: UISprite 컴포넌트 설정
+표 3-19: UISprite 컴포넌트 설정(HPBar)
 
 | 속성 | 값 |
 | ---|:---:|
@@ -32,7 +32,7 @@
 
 
 
-표 3-20
+표 3-20: UISprite 컴포넌트 설정(BarFill)
 
 | 속성 | 값 |
 | ---|:---:|
@@ -44,7 +44,7 @@
 |Color Tint|255, 216, 0, 255|
 
 
-표 3-21
+표 3-21: UISprite 컴포넌트 설정(BarBG)
 
 | 속성 | 값 |
 | ---|:---:|
@@ -60,7 +60,7 @@
 
 
 
-표 3-22
+표 3-22: UISprite 컴포넌트 설정(titleBG)
 
 | 속성 | 값 |
 | ---|:---:|
@@ -82,7 +82,7 @@
 
 
 
-표 3-23
+표 3-23: UILabel 컴포넌트 설정(titleLabel)
 
 | 속성 | 값 |
 | ---|:---:|
@@ -106,7 +106,7 @@
 
 
 
-표 3-24
+표 3-24: UISprite 컴포넌트 설정(HPBar)
 
 | 속성 | 값 |
 | ---|:---:|
@@ -120,16 +120,30 @@
 
 * BarFill 게임 오브젝트에 경계선이 보이면 BarPattern 스프라이트 Border 1, 1, 1, 1로 수정
 
+
+* HPBar 게임 오브젝트에 UISlider 컴포넌트 추가
+  * NGUI - Attach - Slider Script 실행
+  * Forground : BarFill 게임오브젝트
+  * Direction : LeftToRight
+
+---
+
 ### 점수 표시
 
-표 3-25
+* HPBar 게임오브젝트 복사 후 ScoreBar로 명명
+  * UISlider 컴포넌트 제거
+  * BarFill, BarBG 게임오브젝트 제거
+  * Sprite : FillRect 로 변경
+    * Border 10, 10, 10, 10 수정
+
+표 3-25: UILabel 컴포넌트 설정(titleLabel)
 
 | 속성 | 값 |
 | ---|:---:|
 |Text|점수|
 
 
-표 3-26
+표 3-26: UILabel 컴포넌트 설정(ScoreLabel)
 
 | 속성 | 값 |
 | ---|:---:|
@@ -140,7 +154,7 @@
 |Depth|5|
 |Color Tint|255, 255, 255, 255|
 
-표 3-27
+표 3-27: UISprite 컴포넌트 설정(ScoreBar)
 
 | 속성 | 값 |
 | ---|:---:|
@@ -152,15 +166,27 @@
 |Bottom|Target’s Top|-48|
 |Top|Target’s Top|-10|
 
+* ScoreBar 구조
+```
+	ScoreBar
+		titleBG
+			titleLabel
+		ScoreLabel
+```
+
+---
+
 ### 적 웨이브 표시
 
-표 3-28
+* ScoreBar 게임오브젝트 복사 후 WaveBar로 명명
+
+표 3-28: UILabel 컴포넌트 설정(titleLabel)
 
 | 속성 | 값 |
 | ---|:---:|
 |Text|Wave|
 
-표 3-29
+표 3-29: UISprite 컴포넌트 설정(titleBG)
 
 | 속성 | 값 |
 | ---|:---:|
@@ -173,7 +199,7 @@
 |Top|Target’s Top|5|
 
 
-표 3-30
+표 3-30: UISprite 컴포넌트 설정(WaveBar)
 
 | 속성 | 값 |
 | ---|:---:|
@@ -185,6 +211,13 @@
 |Bottom|Target’s Top|-48|
 |Top|Target’s Top|-10|
 
+* WaveBar 구조
+```
+	WaveBar
+		titleBG
+			titleLabel
+		WaveLabel
+```
 
 ### 일시 정지, 배속 변경 버튼 추가
 
