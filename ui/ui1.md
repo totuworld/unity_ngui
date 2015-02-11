@@ -1,6 +1,6 @@
 # 게임 플레이 UI 구성
 
-![complete](/ui/img/3-1-0_2.png)
+![complete](/img/3-1-0_2.png)
 
 
 ### 농장 체력 표시
@@ -96,10 +96,13 @@
 
 
 * HPBar 구조
-> BarBG
-> BarFill
-> titleBG
->> titleLabel
+```
+	HPBar
+		BarBG
+		BarFill
+		titleBG
+			titleLabel
+```
 
 
 
