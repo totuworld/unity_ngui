@@ -2,6 +2,8 @@
 
 ![complete](img/3-1-0_2.png)
 
+[완성된 panel](prefab/InGameSet.unitypackage)
+
 
 ### 농장 체력 표시
 
@@ -434,3 +436,4 @@
 |Depth|7
 |Size|56x10
 |Color Tint|255, 255, 255, 255
+
