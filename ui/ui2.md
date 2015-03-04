@@ -448,6 +448,9 @@ public enum GameState {ready, idle, gameOver, wait, loading}
 			currentHP = 0;
 			// 체력 표시를 모두 제거한다.
 			hpBarSlider.value = 0;
+            hpBarObj.transform.localPosition = Vector3.right * 1000;
+            // hpbar를 끈다.
+            TurnOnOffHPBar(false);
 			enableAttack = false;
 --(후략)--
 ```
