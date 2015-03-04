@@ -433,6 +433,9 @@ public enum GameState {ready, idle, gameOver, wait, loading}
 ```
 
 예제 3-75: Enemy.cs
+
+* 변경점 : 체력이 0이면 hpBarObj를 초기 위치쯤으로 옮기고 TurnOnOffHPBar로 hpBarObj를 끈다.
+
 ```csharp
 --(전략)--
 	public void Damage(float damageTaken)
