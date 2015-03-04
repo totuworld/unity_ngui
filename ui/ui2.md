@@ -1,5 +1,6 @@
 # 게임 플레이 UI 연결
 
+
 ### 농장 체력, 점수, 적 웨이브 표시 연결
 예제 3-52: GamePlayManager.cs
 ```csharp
@@ -463,3 +464,6 @@ public enum GameState {ready, idle, gameOver, wait, loading}
 | Enemy HPBar Root | EnemyHPBarRoot 게임 오브젝트 |
 | Enemy HPBar Panel | Panel 게임 오브젝트 |
 | Enemy HPBar Cam | Main Camera 게임 오브젝트 |
+
+* Assets/Prefabs/Pig 프리팹의 Current State가 move라면 none으로 변경합니다.
+
