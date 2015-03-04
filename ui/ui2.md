@@ -48,6 +48,15 @@
 ---(후략)---
 ```
 
+* @GM 게임 오브젝트의 GamePlayManager에 아래 사항 연결
+
+| 속성 | 값 |
+| ---|:---:|
+| Farm HPSlier | HPBar 게임 오브젝트 |
+| Score Lb | ScoreLabel 게임 오브젝트 |
+| Wave Lb | WaveLabel 게임 오브젝트 |
+
+
 ### 일시 정지 버튼과 배속 버튼 처리
 
 예제 3-56: GamePlayManager.cs
@@ -115,6 +124,20 @@ public partial class GamePlayManager {
 ---(후략)---
 ```
 
+* PauseButton 게임 오브젝트의 UIButton에 아래 사항 연결
+
+| 속성 | 값 |
+| ---|:---:|
+| Notify | @GM 게임 오브젝트 |
+| Method | GamePlayManager/ClickPauseButton |
+
+* SpeedButton 게임 오브젝트의 UIButton에 아래 사항 연결
+
+| 속성 | 값 |
+| ---|:---:|
+| Notify | @GM 게임 오브젝트 |
+| Method | GamePlayManager/ClickSpeedButton |
+
 예제 3-61: GamePlayManager.Button.cs
 ```csharp
 ---(전략)---
@@ -169,6 +192,19 @@ public enum GameState {ready, idle, gameOver, wait, loading}
 ---(후략)---
 ```
 
+* ReloadButton 게임 오브젝트의 UIButton에 아래 사항 연결
+
+| 속성 | 값 |
+| ---|:---:|
+| Notify | @GM 게임 오브젝트 |
+| Method | GamePlayManager/ClickPauseReloadButton |
+
+* @GM 게임 오브젝트의 GamePlayManager에 아래 사항 연결
+
+| 속성 | 값 |
+| ---|:---:|
+| Pause Window | PauseWindow 게임 오브젝트 |
+| Speed Button Text Lb | SpeedLabel 게임 오브젝트 |
 
 ### 적 캐릭터 체력 표시 연동
 
@@ -199,7 +235,7 @@ public enum GameState {ready, idle, gameOver, wait, loading}
 		hpBarObj.transform.localPosition = Vector3.left * 1000;
 		// hpbar를 켠다.
 		TurnOnOffHPBar(true);
-		}
+	}
 
 	protected void RepositionHPBar()
 	{
@@ -310,7 +346,7 @@ public enum GameState {ready, idle, gameOver, wait, loading}
 	{
 		for(int i=0;i<spawnEnemyObjs.Count;i++)
 		{
-			CreateGameObject(enemyHPBar, 20, enemyHPBarRoot, Vector3.one);
+			CreateGameObject(spawnEnemyObjs[i], 20, gameObjectPoolPosition);
 		}
 	}
 ---(후략)---
@@ -415,3 +451,12 @@ public enum GameState {ready, idle, gameOver, wait, loading}
 			enableAttack = false;
 --(후략)--
 ```
+
+* @GM 게임 오브젝트의 GamePlayManager에 아래 사항 연결
+
+| 속성 | 값 |
+| ---|:---:|
+| Enemy HPBar | EnemyHPBar 게임 오브젝트 |
+| Enemy HPBar Root | EnemyHPBarRoot 게임 오브젝트 |
+| Enemy HPBar Panel | Panel 게임 오브젝트 |
+| Enemy HPBar Cam | Main Camera 게임 오브젝트 |
