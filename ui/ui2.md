@@ -89,6 +89,7 @@ public partial class GamePlayManager {
 		pauseWindow.SetActive(true);
 	}
 ---(후략)---
+```
 
 예제 3-60: GamePlayManager.Button.cs
 ```csharp
