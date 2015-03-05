@@ -1,5 +1,11 @@
 # 새로운 적 캐릭터 추가
 
+심화과정7 - 새로운 적 캐릭터 추가 바로보기
+
+[![심화과정7 - 새로운 적 캐릭터 추가 바로보기](http://img.youtube.com/vi/gCbJkPRPgL8/0.jpg)](https://www.youtube.com/watch?v=A1EPMKMDSrE)
+
+
+
 ### 새로운 적 캐릭터 설정
 
 예제 3-44: Enemy.cs

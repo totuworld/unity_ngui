@@ -4,6 +4,10 @@
 
 [완성된 panel](prefab/InGameSet.unitypackage)
 
+심화과정8 - 게임 플레이 UI 구성
+
+[![심화과정8 - 새로운 적 캐릭터 추가 바로보기](http://img.youtube.com/vi/gCbJkPRPgL8/0.jpg)](https://www.youtube.com/watch?v=rbk77YA1VVE)
+
 
 ### 농장 체력 표시
 

@@ -2,7 +2,12 @@
 
 심화과정5 - 게임 플레이 매니저 1 바로보기
 
-[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/gCbJkPRPgL8/0.jpg)](http://www.youtube.com/watch?v=gCbJkPRPgL8)
+[![심화과정5 - 게임 플레이 매니저 1 바로보기](http://img.youtube.com/vi/gCbJkPRPgL8/0.jpg)](http://www.youtube.com/watch?v=gCbJkPRPgL8)
+
+심화과정6 - 게임 플레이 매니저 2 바로보기
+
+[![심화과정6 - 게임 플레이 매니저 2 바로보기](http://img.youtube.com/vi/gCbJkPRPgL8/0.jpg)](https://www.youtube.com/watch?v=OTy9IKCFz5E)
+
 
 ### 게임 데이터 스크립트 생성
 
