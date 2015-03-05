@@ -22,3 +22,7 @@
    * [디펜스 게임 유저 인터페이스 구성](ui/README.md)
        * [게임 플레이 UI 구성](ui/ui1.md)
        * [게임 플레이 UI 연결](ui/ui2.md)
+         * [Enemy](ui/full/1/Enemy.md)
+         * [GamePlayManager](ui/full/1/GamePlayManager.md)
+         * [GamePlayManager.Button](ui/full/1/GamePlayManager.Button.md)
+         * [GameData](ui/full/1/GameData.md)

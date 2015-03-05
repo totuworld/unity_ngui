@@ -393,42 +393,42 @@ public enum GameState {ready, idle, gameOver, wait, loading}
 	void SpawnEnemy(EnemyWaveData enemyData)
 	{
 --(중략)--
-		// 선택된 적 캐릭터를 초기화하여 작동시킨다.
-		currentSpawnGameObject.tag = enemyData.tagName;
-		Enemy currentEnemy = currentSpawnGameObject.GetComponent<Enemy>();
-		currentEnemy.InitEnemy(enemyData.HP, enemyData.AD, enemyData.MS);
-		shiftPosition++;
+			// 선택된 적 캐릭터를 초기화하여 작동시킨다.
+			currentSpawnGameObject.tag = enemyData.tagName;
+			Enemy currentEnemy = currentSpawnGameObject.GetComponent<Enemy>();
+			currentEnemy.InitEnemy(enemyData.HP, enemyData.AD, enemyData.MS);
+			shiftPosition++;
 
-		// 게임오브젝트 풀에서 사용가능한 적 체력 표시 인터페이스가 있는지 체크.
-		GameObject currentEnemyHPBar;
-		if (!gameObjectPools [enemyHPBar.name]
-			.NextGameObject(out currentEnemyHPBar))
-		{
-			// 사용가능한 게임 오브젝트가 없다면 생성하여 추가한다.
-			currentEnemyHPBar =
-				Instantiate(
-					enemyHPBar,
-					gameObjectPoolPosition.transform.position,
-					Quaternion.identity) as GameObject;
+			// 게임오브젝트 풀에서 사용가능한 적 체력 표시 인터페이스가 있는지 체크.
+			GameObject currentEnemyHPBar;
+			if (!gameObjectPools [enemyHPBar.name]
+				.NextGameObject(out currentEnemyHPBar))
+			{
+				// 사용가능한 게임 오브젝트가 없다면 생성하여 추가한다.
+				currentEnemyHPBar =
+					Instantiate(
+						enemyHPBar,
+						gameObjectPoolPosition.transform.position,
+						Quaternion.identity) as GameObject;
 
-			currentEnemyHPBar.transform.parent = enemyHPBarRoot;
-			currentEnemyHPBar.transform.localScale = Vector3.one;
-			currentEnemyHPBar.name =
-				enemyHPBar.name + gameObjectPools [enemyHPBar.name].lastIndex;
-			gameObjectPools [enemyHPBar.name].AddGameObject(currentEnemyHPBar);
-		}
-		// 적 체력 표시 인터페이스 할당.
-		UISlider tempEnemyHPBarSlider =
-			currentEnemyHPBar.GetComponent<UISlider>();
-		currentEnemy.InitHPBar(
-			tempEnemyHPBarSlider,
-			enemyHPBarPanel,
-			enemyHPBarCam);
+				currentEnemyHPBar.transform.parent = enemyHPBarRoot;
+				currentEnemyHPBar.transform.localScale = Vector3.one;
+				currentEnemyHPBar.name =
+					enemyHPBar.name + gameObjectPools [enemyHPBar.name].lastIndex;
+				gameObjectPools [enemyHPBar.name].AddGameObject(currentEnemyHPBar);
+			}
+			// 적 체력 표시 인터페이스 할당.
+			UISlider tempEnemyHPBarSlider =
+				currentEnemyHPBar.GetComponent<UISlider>();
+			currentEnemy.InitHPBar(
+				tempEnemyHPBarSlider,
+				enemyHPBarPanel,
+				enemyHPBarCam);
 
-		if(enemyData.tagName == "boss")
-		{
-			// TODO: 적 보스 캐릭터가 등장했다는 표시를 띄운다.
-		}
+			if(enemyData.tagName == "boss")
+			{
+				// TODO: 적 보스 캐릭터가 등장했다는 표시를 띄운다.
+			}
 --(후략)--
 ```
 
