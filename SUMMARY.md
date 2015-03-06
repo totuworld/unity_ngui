@@ -26,3 +26,4 @@
          * [GamePlayManager](ui/full/1/GamePlayManager.md)
          * [GamePlayManager.Button](ui/full/1/GamePlayManager.Button.md)
          * [GameData](ui/full/1/GameData.md)
+       * [게임 플레이 추가 작업](ui/additional.md)
