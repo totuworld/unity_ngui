@@ -593,7 +593,8 @@ public override void Attack()
 ```
 
 표 3-89: UIButton 컴포넌트 설정
-게임 오브젝트|Target|Notify|Method
- ---|:---:|:---:|:---:
-ReGameButton|ReGameButton|@GM|GamePlayManager.ClickResGameButton
-ResultHomeButton|ResultHomeButton|@GM|GamePlayManager.ClickResultHomeButton
+
+|게임 오브젝트|Target|Notify|Method|
+|---|:---:|:---:|:---:|
+|ReGameButton|ReGameButton|@GM|GamePlayManager.ClickResGameButton|
+|ResultHomeButton|ResultHomeButton|@GM|GamePlayManager.ClickResultHomeButton|
