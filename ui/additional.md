@@ -10,11 +10,12 @@
 
 ### 코인 제작
 
-1. coins 스프라이트 편집
-2. 씬에 배치(name : coin, Sorting Layer : ForeGround)
-3. 애니메이션 제작(coin)
+* coins 스프라이트 편집
+* 씬에 배치(name : coin, Sorting Layer : ForeGround)
+* 애니메이션 제작(coin)
 
 표 3-87: 프레임별 스프라이트
+
 |프레임|스프라이트|
 |:---:|:---:|
 |0|coins_0|
@@ -32,6 +33,7 @@
 |12|coins_0|
 
 표 3-88: 프레임 별 Transform 컴포넌트 Position 입력 값
+
 |프레임|Transform 컴포넌트 Position|
 |:---:|:---:|
 |0|0, 0, 0|
@@ -40,8 +42,8 @@
 |9|0, 0, 0|
 |12|0, 2, 0|
 
-4. Position.y 커브 편집
-5. coin Controller 편집
+* Position.y 커브 편집
+* coin Controller 편집
 
 
 ### 코인 스크립트 제작 및 적용
