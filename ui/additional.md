@@ -1,3 +1,4 @@
+
 # 게임 플레이 추가 작업
 
 ### 코인 표시
@@ -6,6 +7,18 @@
 
 * 위 내용은 이미 작성되어있기 때문에 추가로 필요한 작업이 없습니다.
 > 직접 진행하고 싶으신 분들은 책 299~316 페이지를 확인하세요.
+
+* 결과창 연결
+> 책에서는 빠진 부분입니다.
+
+|GamePlayManager 인스펙터 값 이름|게임 오브젝트 이름|
+|:---:|:---:|
+|Result Window|ResultWindow|
+|Result High Score Lb|HighScoreLabel|
+|Result Now Score Lb|CurrentScoreLabel|
+|Result Wave Lb|WaveResultLabel|
+|Result Dead Enemys Lb|EnemyLabel|
+|Result Get Coins Lb|4_CoinSectionBG의 자식 게임오브젝트 CoinLabel|
 
 
 ### 코인 제작
