@@ -653,4 +653,23 @@ public override void Attack()
 |ResultHomeButton|ResultHomeButton|@GM|GamePlayManager.ClickResultHomeButton|
 
 
+---
+
+* Pause Widnow 연결
+
+GamePlayManager.Button.cs
+
+```csharp
+    public void ClickPauseHomeButton()
+    {
+        // 다른 씬으로 전환한다.
+        LoadReadyScene(false);
+    }
+```
+
+|게임 오브젝트|Target|Notify|Method|
+|---|:---:|:---:|:---:|
+|HomeButton|HomeButton|@GM|GamePlayManager.ClickPauseHomeButton|
+|PlayButton|PlayButton|@GM|GamePlayManager.ClickPausePlayButton|
+
 * 게임 플레이 시 invisibleArea 태그를 추가하라는 에러가 나오면 태그를 추가합니다.
