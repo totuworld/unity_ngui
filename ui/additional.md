@@ -8,18 +8,6 @@
 * 위 내용은 이미 작성되어있기 때문에 추가로 필요한 작업이 없습니다.
 > 직접 진행하고 싶으신 분들은 책 299~316 페이지를 확인하세요.
 
-* 결과창 연결
-> 책에서는 빠진 부분입니다.
-
-|GamePlayManager 인스펙터 값 이름|게임 오브젝트 이름|
-|:---:|:---:|
-|Result Window|ResultWindow|
-|Result High Score Lb|HighScoreLabel|
-|Result Now Score Lb|CurrentScoreLabel|
-|Result Wave Lb|WaveResultLabel|
-|Result Dead Enemys Lb|EnemyLabel|
-|Result Get Coins Lb|4_CoinSectionBG의 자식 게임오브젝트 CoinLabel|
-
 
 ### 코인 제작
 
@@ -95,6 +83,12 @@ public class Coin : MonoBehaviour {
 
 * coin Prefab 제작
 
+1. coin 게임 오브젝트에 Coin 컴포넌트 추가
+2. coin 애니메이션 12프레임에 Add Event로 EndCoinAnimation 연결
+3. 빈 게임 오브젝트를 만들어 coinRoot로 이름짓고 coin 게임 오브젝트를 자식으로 넣는다.
+4. Assets/Prefab 폴더에 프리팹 생성하여 coinRoot를 할당
+
+
 예제 3-77: GamePlayManager.cs
 
 ```csharp
@@ -151,7 +145,7 @@ public class Coin : MonoBehaviour {
 예제 3-80: Enemy.cs
 ```csharp
 ---(전략)---
-	public void DeadEnd()
+	public void ResetEnemy()
 	{
 		// 임의의 확율로 코인을 생성한다.
 		int makePossibleCoin = UnityEngine.Random.Range(0, 10);
@@ -164,6 +158,8 @@ public class Coin : MonoBehaviour {
 		currentState = EnemyState.none;
 		transform.position =
 			GameData.Instance.gamePlayManager.gameObjectPoolPosition.position;
+		animator.ResetTrigger("isDead");
+        animator.SetTrigger("isAlive");
 		// hpbar를 반환한다.
 		hpBarObj.transform.position =
 			GameData.Instance.gamePlayManager.enemyHPBarRoot.position;
@@ -172,7 +168,8 @@ public class Coin : MonoBehaviour {
 ---(후략)---
 ```
 
-* Pig와 Rat의 dead 애니메이션 11 프레임에 Add Event로 DeadEnd 메서드를 호출한다.
+> 예제 3-80는 책에서는 DeadEnd이나 [게임 플레이 매니저](prototype/gm.md)에서 이미 제작된 ResetEnemy를 활용하도록 변경하였습니다. 이후에 등장하는 DeadEnd도 모두 ResetEnemy로 변경할 것입니다.
+
 
 * @GM 게임 오브젝트의 GamePlayManager에 아래 사항 연결
 
@@ -218,7 +215,7 @@ public class Coin : MonoBehaviour {
 예제 3-83: Enemy.cs
 ```csharp
 ---(전략)---
-	public void DeadEnd()
+	public void ResetEnemy()
 	{
 		// 임의의 확율로 코인을 생성한다.
 		int makePossibleCoin = UnityEngine.Random.Range(0, 10);
@@ -285,15 +282,15 @@ public class Coin : MonoBehaviour {
 	void CheckSpawnEnemy()
 	{
 ---(중략)---
-	// 적 생성 데이터 전체가 소모되었다면 게임을 종료하도록 한다.
-	if (currentEnemyWaveDataIndexNo >= enemyWaveDatas.Count)
-	{
-		nowGameState = GameState.gameOver;
-		CancelInvoke("CheckSpawnEnemy");
-		// 결과창 표시.
-		OpenResult();
-		return;
-	}
+		// 적 생성 데이터 전체가 소모되었다면 게임을 종료하도록 한다.
+		if (currentEnemyWaveDataIndexNo >= enemyWaveDatas.Count)
+		{
+			nowGameState = GameState.gameOver;
+			CancelInvoke("CheckSpawnEnemy");
+			// 결과창 표시.
+			OpenResult();
+			return;
+		}
 ---(후략)---
 ```
 
@@ -342,7 +339,7 @@ public class Coin : MonoBehaviour {
 ---(후략)---
 ```
 
-예제 3-88: Enemy.cs
+예제 3-88: GamePlayManager.cs
 ```csharp
 ---(전략)---
 	public void OpenResult()
@@ -358,6 +355,17 @@ public class Coin : MonoBehaviour {
 		}
 ---(후략)---
 ```
+
+* 결과창 연결
+
+|GamePlayManager 인스펙터 값 이름|게임 오브젝트 이름|
+|:---:|:---:|
+|Result Window|ResultWindow|
+|Result High Score Lb|HighScoreLabel|
+|Result Now Score Lb|CurrentScoreLabel|
+|Result Wave Lb|WaveResultLabel|
+|Result Dead Enemys Lb|EnemyLabel|
+|Result Get Coins Lb|4_CoinSectionBG의 자식 게임오브젝트 CoinLabel|
 
 
 ### 발사 게임 오브젝트 수정
@@ -398,6 +406,8 @@ public class Coin : MonoBehaviour {
 ---(후략)---
 ```
 
+* 책 335페이지의 AttackAndRemove 메서드는 앞서 제작한 [새로운 적 캐릭터 추가](prototype/newenemy.md)의 예제 3-48에 나온 AttackAndDestroy 메서드를 지칭하는 것입니다. 여기서는 앞서 제작한 이름 그대로 AttackAndDestroy로 사용합니다.
+
 예제 3-91: ShotObj.cs
 
 ```csharp
@@ -411,7 +421,7 @@ public class Coin : MonoBehaviour {
 		if (other.CompareTag("enemy") || other.CompareTag("boss"))
 		{
 			// 공격 후 게임 오브젝트 제거.
-			AttackAndRemove(other);
+			AttackAndDestroy(other);
 		}
 		// 게임 플레이 화면 외부로 진입했을 때 초기 위치로 돌아가도록 한다.
 		else if (other.CompareTag("invisibleArea"))
@@ -419,7 +429,8 @@ public class Coin : MonoBehaviour {
 			ResetShotObj();
 		}
 	}
-	protected void AttackAndRemove(Collider2D other)
+
+	protected void AttackAndDestroy(Collider2D other)
 	{
 		IDamageable damageTarget =
 			(IDamageable)other.GetComponent(typeof(IDamageable));
@@ -439,7 +450,7 @@ public class Coin : MonoBehaviour {
 		if( other.CompareTag("obstacle"))
 		{
 			// 공격 후 게임 오브젝트 제거.
-			AttackAndRemove(other);
+			AttackAndDestroy(other);
 		}
 		// 게임 플레이 화면 외부로 진입했을 때 초기 위치로 돌아가도록 한다.
 		else if (other.CompareTag("invisibleArea"))
@@ -540,14 +551,8 @@ public class Coin : MonoBehaviour {
 ---(후략)---
 ```
 
-예제 3-96: EnemyRanged.cs
-```csharp
----(전략)---
-	// shot gameobject pool
-	GameObjectPool objPool;
-	Vector3 spawnPos = new Vector3(0, 50, 0);
----(후략)---
-```
+* 예제 3-96: EnemyRanged.cs의 내용은 앞서 제작한 [새로운 적 캐릭터 추가](prototype/newenemy.md)에서 이미 추가한 내용으로 여기서는 제외했습니다.
+
 
 예제 3-97: EnemyRanged.cs
 ```csharp
@@ -644,5 +649,8 @@ public override void Attack()
 
 |게임 오브젝트|Target|Notify|Method|
 |---|:---:|:---:|:---:|
-|ReGameButton|ReGameButton|@GM|GamePlayManager.ClickResGameButton|
+|ReGameButton|ReGameButton|@GM|GamePlayManager.ClickReGameButton|
 |ResultHomeButton|ResultHomeButton|@GM|GamePlayManager.ClickResultHomeButton|
+
+
+* 게임 플레이 시 invisibleArea 태그를 추가하라는 에러가 나오면 태그를 추가합니다.
