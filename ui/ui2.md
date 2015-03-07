@@ -1,5 +1,7 @@
 # 게임 플레이 UI 연결
 
+심화과정9 - 게임 플레이 UI 연결
+
 [![심화과정9 - 게임 플레이 UI 연결 바로보기](http://img.youtube.com/vi/gCbJkPRPgL8/0.jpg)](https://www.youtube.com/watch?v=_m5rTpQcGag)
 
 ### 농장 체력, 점수, 적 웨이브 표시 연결
