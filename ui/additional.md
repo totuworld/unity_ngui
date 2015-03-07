@@ -557,7 +557,7 @@ public class Coin : MonoBehaviour {
 예제 3-97: EnemyRanged.cs
 ```csharp
 ---(전략)---
-public override void Attack()
+	public override void Attack()
 	{
 		if( spawnPos.x == 0)
 		{
